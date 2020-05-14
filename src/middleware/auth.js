@@ -6,7 +6,7 @@ const auth = async (req,res,next)=>{
         const token = req.header('Authorization').replace('Bearer ','')
 
         //decode the token
-        const decoded = jwt.verify(token,'thisismynewtesting')
+        const decoded = jwt.verify(token,process.env.JWT_SECRET)
 
         // find the user with the unique id and the unique authentication token available with that user
         console.log(decoded._id)
