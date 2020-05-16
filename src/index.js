@@ -1,12 +1,17 @@
-const express = require('express')
+const app = require('./app')
+/* const express = require('express')
 require('./db/mongoose_original')
 const User = require('./models/user')
 const Task = require('./models/task')
 const userRouter = require('./routers/user')
 const taskRouter = require('./routers/task')
 
-const app = express()
+const app = express() */
 const port = process.env.PORT //|| 3000
+
+app.listen(port,()=>{
+    console.log('Server is up on port '+port)
+})
 
 /* const multer = require('multer')
 
@@ -55,9 +60,9 @@ app.use((req,res,next)=>{
     //next()
 }) */
 
-app.use(express.json())
+/* app.use(express.json())
 app.use(userRouter)
-app.use(taskRouter)
+app.use(taskRouter) */
 
 //
 // without middleware: new request -> run route handler
@@ -66,22 +71,19 @@ app.use(taskRouter)
 // in this "do something" user would be prevented to run route handler if the user is not authenticated using these web 
 // tokens.
 
-app.listen(port,()=>{
-    console.log('Server is up on port '+port)
-})
 
-const main = async ()=>{
+//const main = async ()=>{
     // get the owner of the task based on task id
     /* const task = await Task.findById('5ebbcefda796224a543f53da')
     await task.populate('owner').execPopulate()
     console.log(task.owner) */
 
     //get the task information based on the owner id
-    const user = await User.findById('5ebb9630f555592e8821251b')
-    await user.populate('tasks').execPopulate()
-    console.log(user.tasks)
+  //  const user = await User.findById('5ebb9630f555592e8821251b')
+   // await user.populate('tasks').execPopulate()
+   // console.log(user.tasks)
 
-}
+//}
 //main()
 /* const bcrypt = require('bcryptjs') 
 const myFunction = async()=>{
